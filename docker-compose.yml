@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  awards:
+    build: ./microservices/awards-service
+    volumes:
+      - ./microservices/awards-service:/app
+      - /app/node_modules
+  
+  dogs:
+    build: ./microservices/dogs-service
+    volumes:
+      - ./microservices/dogs-service:/app
+      - /app/node_modules
+
+  races:
+    build: ./microservices/races-service
+    volumes:
+      - ./microservices/races-service:/app
+      - /app/node_modules
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - awards
+      - dogs
+      - races
