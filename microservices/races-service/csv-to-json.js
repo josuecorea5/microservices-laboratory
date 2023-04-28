@@ -17,9 +17,9 @@ const csvToJson = async () => {
             const indexColor = item.color_de_pelo.split(';').indexOf(color)
             color = `${color}${item.color_de_pelo.split(';')[indexColor + 1]}`
             itemColorArray.splice(indexColor, 2)
-            return [...acc, color];
+            return [...acc, color.trim()];
           }
-          return [...acc, color];
+          return [...acc, color.trim()];
         },[]),
       }
     })

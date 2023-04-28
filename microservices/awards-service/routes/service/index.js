@@ -13,4 +13,15 @@ router.get('/', async (req, res) => {
   return res.send(response);
 });
 
+router.get('/:id', async(req,res) => {
+  const { id } = req.params;
+  const championship = await Championships.findByPk(id);
+  const response = {
+    service: 'awards',
+    architecture: 'microservices',
+    data: championship
+  }
+  return res.send(response);
+})
+
 module.exports = router;
