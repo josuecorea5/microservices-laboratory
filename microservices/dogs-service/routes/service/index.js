@@ -24,8 +24,21 @@ router.get('/', (req, res) => {
   } catch (error) {
     return res.status(404).send({message: 'Dog not found'});
   }
+});
 
-
+router.get('/:race', (req, res) => {
+  const { race } = req.params;
+  try {
+    const dogs = data.dogs.filter((dog) => dog.raza === race.trim());
+    const response = {
+      service: 'dogs',
+      architecture: 'microservices',
+      data: dogs
+    };
+    return res.send(response);
+  } catch (error) {
+    return res.status(404).send({message: 'Dog not found'});
+  }
 });
 
 module.exports = router;

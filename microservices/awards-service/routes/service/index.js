@@ -13,6 +13,21 @@ router.get('/', async (req, res) => {
   return res.send(response);
 });
 
+router.get('/dog/:id', async(req,res) => {
+  const { id } = req.params;
+  const awardsDog = await Championships.findAll({
+    where: {
+      id_campeon: +id
+    }
+  });
+  const response = {
+    service: 'awards',
+    architecture: 'microservices',
+    data: awardsDog
+  }
+  return res.send(response);
+})
+
 router.get('/:id', async(req,res) => {
   const { id } = req.params;
   const championship = await Championships.findByPk(id);
@@ -23,5 +38,6 @@ router.get('/:id', async(req,res) => {
   }
   return res.send(response);
 })
+
 
 module.exports = router;
