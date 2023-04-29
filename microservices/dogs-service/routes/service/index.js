@@ -15,7 +15,11 @@ router.get('/', (req, res) => {
     return res.send(response);
   }
   try {
-    const dog = data.dogs.find(dog => dog.Id === +id || dog.nombre_perro === name.trim());
+    const dog = data.dogs.find(dog => {
+      return (
+        id && dog.Id === +id || name && dog.nombre_perro === name.trim()
+      )
+    });
     const response = {
       service: 'dogs',
       architecture: 'microservices',
