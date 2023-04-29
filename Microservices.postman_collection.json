@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "ad98b022-dad1-451a-b086-dea847df0dc1",
+		"name": "Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12729097"
+	},
+	"item": [
+		{
+			"name": "awards-services",
+			"item": [
+				{
+					"name": "Get Awards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/awards/dog/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"awards",
+								"dog",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get race by puntaje",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/awards/*",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"awards",
+								"*"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dogs-services",
+			"item": [
+				{
+					"name": "Get dogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/dogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"dogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get awards dogs by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/dogs/dog/Nina",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"dogs",
+								"dog",
+								"Nina"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "races-services",
+			"item": [
+				{
+					"name": "Get races",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/races",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"races"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get races by tamanio and color",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/races/characteristics?tamanio_de_pelo=Corto&color_de_pelo=Negro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"races",
+								"characteristics"
+							],
+							"query": [
+								{
+									"key": "tamanio_de_pelo",
+									"value": "Corto"
+								},
+								{
+									"key": "color_de_pelo",
+									"value": "Negro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get average peso by race",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/races/Beagle",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"races",
+								"Beagle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
