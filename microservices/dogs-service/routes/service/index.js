@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../../data/data-dogs');
+const axios = require('axios');
 
 router.get('/', (req, res) => {
   const { id, name } = req.query;
@@ -35,14 +36,13 @@ router.get('/dog/:name', async(req, res) => {
     })
 
     const dogsAwards = await axios.get(`http://awards:5000/api/v1/awards/dog/${dogs.Id}`);
-    console.log(dogsAwards)
-    // const dogsAwardsData = dogsAwardsResponse.reduce((acc,dog) => {
-    //   return [...acc, ...dog.data.data]
-    // }, []);
     const response = {
       service: 'dogs',
       architecture: 'microservices',
-      data: dogsAwards.data.data
+      data: {
+        dog: dogs,
+        awards: dogsAwards.data
+      }
     };
 
     return res.send(response);
