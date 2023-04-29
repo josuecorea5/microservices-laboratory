@@ -34,6 +34,31 @@ router.get('/', (req, res) => {
 
 });
 
+router.get('/characteristics', (req, res) => {
+  const { tamanio_de_pelo, color_de_pelo } = req.query;
+  try {
+    const races = data.filter((race) => race.tamanio_de_pelo === tamanio_de_pelo.trim() && race.color_de_pelo.includes(color_de_pelo.trim())).map((data) => {
+      return {
+        ...data,
+        color_de_pelo: data.color_de_pelo.reduce((acc,value) => {
+          if(value === color_de_pelo.trim()) {
+            return acc + value
+          }
+          return acc
+        }, '')
+      }
+    });
+    const response = {
+      service: 'races',
+      architecture: 'microservices',
+      data: races
+    }    
+    return res.send(response);
+  } catch (error) {
+    return res.status(404).send({message:'Races not found'})
+  }
+})
+
 router.get('/:race', async(req, res) => {
   const { race } = req.params;
   try {
@@ -58,5 +83,6 @@ router.get('/:race', async(req, res) => {
     return res.status(500).send({message: 'Internal server error'})
   }
 });
+
 
 module.exports = router;
